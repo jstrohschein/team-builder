@@ -27,7 +27,7 @@ const App = () => {
       email: member.email
     }
 
-    setMembers(...members, newMember)
+    setMembers([...members, newMember])
 
   }
 
@@ -36,7 +36,7 @@ const App = () => {
   return (
 
     <div>
-      <AddMemberForm addNewMember={addNewMember} title='default title' />
+      <AddMemberForm addNewMember={addNewMember} />
       <Members members={members} />
     </div>
     

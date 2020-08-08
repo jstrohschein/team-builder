@@ -28,8 +28,8 @@ const [member, setMember] = useState({name: '', role: '', email: ''})
   
   return (
 
-    <div className="App">
-      <h1>Team List</h1>
+    <div>
+    <h1>Team List</h1>
 
     <form onSubmit={submitForm}>
 
