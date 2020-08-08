@@ -7,6 +7,10 @@ import '../App.css';
 
 const Members = props => {
 
+
+  console.log(props)
+
+  
   return (
 
   <ul>

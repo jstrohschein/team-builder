@@ -6,31 +6,32 @@ import React, { useState } from 'react'
 const AddMemberForm = (props) => {
 
 
-const [team, setTeam] = useState([{name: '', email: '', role: ''}])
+const [member, setMember] = useState({name: '', role: '', email: ''})
   //console.log('TEAM: ', team)
 
   const handleChanges = e => {
 
-    const newTeamMember = {...team, [e.target.name]: e.target.value}
+    const newTeamMember = {...member, [e.target.name]: e.target.value}
     console.log('New Team Member: ', newTeamMember)
 
-    setTeam(newTeamMember)
+    setMember(newTeamMember)
 
   }
 
   const submitForm = e => {
 
     e.preventDefault()
-
-
+    props.addNewMember(member)
+    setMember({name: '', role: '', email: ''})
   }
 
+  
   return (
 
     <div className="App">
       <h1>Team List</h1>
 
-    <form>
+    <form onSubmit={submitForm}>
 
       <label htmlFor='Add Team Member'></label>
         <input
@@ -38,7 +39,8 @@ const [team, setTeam] = useState([{name: '', email: '', role: ''}])
           type='text'
           placeholder='Name'
           name='name'
-          // onChange={handleChanges}
+          value={member.name}
+          onChange={handleChanges}
         />
 
         <label htmlFor='Add role'></label>
@@ -47,7 +49,8 @@ const [team, setTeam] = useState([{name: '', email: '', role: ''}])
             type='text'
             placeholder='Role'
             name='role'
-            //onChange={handleChanges}
+            value={member.role}
+            onChange={handleChanges}
           />
 
         <label htmlFor='Add Email'></label>
@@ -56,19 +59,12 @@ const [team, setTeam] = useState([{name: '', email: '', role: ''}])
           type='email'
           placeholder='Email'
           name='email'
-          //onChange={handleChanges}
+          value={member.email}
+          onChange={handleChanges}
         />
 
         <button type='submit'>Add Team Member</button>
-
-          
-
     </form>
-
-
-        {/* <ul>
-        {teamMembers.map(member => <li>{member.name}</li>)}
-      </ul> */}
     </div>
 
 
